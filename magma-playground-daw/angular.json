@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MagmaPlayground": {
+    "magma-playground-daw": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/MagmaPlayground",
+            "outputPath": "dist/magma-playground-daw",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -39,7 +39,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -62,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "MagmaPlayground:build"
+            "browserTarget": "magma-playground-daw:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "MagmaPlayground:build:production"
+              "browserTarget": "magma-playground-daw:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "MagmaPlayground:build"
+            "browserTarget": "magma-playground-daw:build"
           }
         },
         "test": {
@@ -110,15 +109,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "MagmaPlayground:serve"
+            "devServerTarget": "magma-playground-daw:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "MagmaPlayground:serve:production"
+              "devServerTarget": "magma-playground-daw:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "MagmaPlayground"
+    }
+  },
+  "defaultProject": "magma-playground-daw"
 }
