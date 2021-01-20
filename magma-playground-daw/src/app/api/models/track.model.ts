@@ -1,4 +1,4 @@
-import { Rack } from "./rack";
+import { Rack } from "./rack.model";
 
 export class Track {
     id: number;
