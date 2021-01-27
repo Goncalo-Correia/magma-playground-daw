@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 40px 1fr 250px;
-    gap: 0px 0px;
+    gap: 10px 0px;
     grid-template-areas:
       "Header"
       "Body"
@@ -12,13 +12,13 @@
 }
   
 #layout-header { 
-    grid-area: Header; 
+    grid-area: Header;
 }
 
 #layout-body { 
-    grid-area: Body; 
+    grid-area: Body;
 }
 
 #layout-footer { 
-    grid-area: Footer; 
+    grid-area: Footer;
 }
