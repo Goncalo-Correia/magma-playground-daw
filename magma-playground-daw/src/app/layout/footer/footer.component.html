@@ -1,3 +1,7 @@
-<div id="footer">
-
+<div id="footer" class="position-relative" #footer [style.width.px]="data.width" [style.height.px]="data.height">
+    <div class="resize resize__top"
+        (resize)="onResize($event)"
+        [targetElement]="footer"
+        [direction]="Footer_ResizeDirection"
+    ></div>
 </div>

@@ -1,16 +1,12 @@
 #layout-grid-container {
+    display: grid;
+    grid-template-rows: 40px 1fr;
     width: 100vw;
     height: 100vh;
 }
-  
-#layout-header { 
- 
-}
 
-#layout-body { 
-
-}
-
-#layout-footer { 
-
+#layout-flex-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
 }

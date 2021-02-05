@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularResizeElementDirection, AngularResizeElementEvent } from 'angular-resize-element';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'magma-playground-daw';
+  
 }

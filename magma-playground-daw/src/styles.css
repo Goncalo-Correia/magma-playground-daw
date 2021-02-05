@@ -27,6 +27,12 @@ body {
     width: 100%;
 }
 
+/* ----- Position ----- */
+
+.position-relative {
+    position: relative;
+}
+
 /* ----- Padding ----- */
 
 .padding-x-5 {
@@ -37,6 +43,16 @@ body {
 .padding-x-10 {
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.padding-y-5 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.padding-y-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .padding-top-5 {

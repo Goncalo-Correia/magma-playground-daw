@@ -1,3 +1,7 @@
-<div id="side-menu" class="full-height">
-    
+<div id="side-menu" class="position-relative" #sidemenu [style.width.px]="data.width" [style.height.px]="data.height">
+    <div class="resize resize__right"
+        (resize)="onResize($event)"
+        [targetElement]="sidemenu"
+        [direction]="SideMenu_ResizeDirection"
+    ></div>
 </div>

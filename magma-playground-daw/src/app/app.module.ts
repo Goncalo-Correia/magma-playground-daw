@@ -6,7 +6,7 @@ import { BodyComponent } from './layout/body/body.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MainMenuComponent } from './layout/mainmenu/mainmenu.component';
 import { SideMenuComponent } from './layout/sidemenu/sidemenu.component';
-import { ResizeMenuComponent } from './layout/resizemenu/resizemenu.component';
+import { AngularResizeElementModule } from 'angular-resize-element';
 
 @NgModule({
   declarations: [
@@ -15,11 +15,11 @@ import { ResizeMenuComponent } from './layout/resizemenu/resizemenu.component';
     BodyComponent,
     FooterComponent,
     MainMenuComponent,
-    SideMenuComponent,
-    ResizeMenuComponent
+    SideMenuComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AngularResizeElementModule
   ],
   providers: [],
   exports: [

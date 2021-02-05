@@ -1,4 +1,4 @@
 #footer {
     background-color: var(--color-background-secondary);
-    height: 400px;
+    background-color: yellow !important;
 }
