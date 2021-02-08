@@ -1,4 +1,4 @@
 #side-menu {
     order: 1;
-    background-color: white;
+    background-color: var(--color-background-secondary);
 }

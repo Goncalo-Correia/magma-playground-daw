@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   footerResizeEventHandler(footerHeight: number) {
     this.sidebar_defaultHeight = (document.getElementById('layout-menu-container').offsetHeight + this.footer_defaultHeight) - footerHeight;
     this.footer_defaultHeight = footerHeight;
-    console.log(document.getElementById('layout-flex-container').offsetHeight)
   }
 
 }
