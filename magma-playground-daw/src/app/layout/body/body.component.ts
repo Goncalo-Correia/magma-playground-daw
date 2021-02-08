@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'layout-body',
@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 
-export class BodyComponent{
+export class BodyComponent {
+
+  @Input() sidebar_defaultWidth: number;
+  @Input() sidebar_defaultHeight: number;
 
 }
