@@ -6,6 +6,7 @@ import { AngularResizeElementDirection, AngularResizeElementEvent } from 'angula
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
   title = 'magma-playground-daw';
 
