@@ -9,32 +9,36 @@ import { AngularResizeElementDirection, AngularResizeElementEvent } from 'angula
 
 export class SideMenuComponent implements OnInit {
 
-  @Input() sidebar_defaultWidth: number;
-  @Input() sidebar_defaultHeight: number;
-
-  private minSideMenuWidth: number = 200;
-  private maxSideMenuWidth: number;
+  private sideMenu_Width: number;
+  private sideMenu_Height: number;
+  private minSideMenu_Width: number = 200;
+  private maxSideMenu_Width: number;
 
   public readonly SideMenu_ResizeDirection = AngularResizeElementDirection.RIGHT;
   public data: any = {};
 
   ngOnInit() {
-    this.maxSideMenuWidth = window.innerWidth / 2;
-    this.data.width = this.sidebar_defaultWidth;
-    this.data.height = this.sidebar_defaultHeight;
+    this.maxSideMenu_Width = window.innerWidth / 2;
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.data.height = changes.sidebar_defaultHeight.currentValue;
+  setSideMenuComponentDimensions(sideMenu_Width: number, sideMenu_Height : number) {
+    this.sideMenu_Width = sideMenu_Width;
+    this.sideMenu_Height = sideMenu_Height;
+    this.setComponentDimensions();
   }
 
-  public onResize(evt: AngularResizeElementEvent): void {
-    if (evt.currentWidthValue >= this.minSideMenuWidth && evt.currentWidthValue <= this.maxSideMenuWidth) {
+  onResize(evt: AngularResizeElementEvent): void {
+    if (evt.currentWidthValue >= this.minSideMenu_Width && evt.currentWidthValue <= this.maxSideMenu_Width) {
       this.data.width = evt.currentWidthValue;
     }
     this.data.height = evt.currentHeightValue;
     this.data.top = evt.currentTopValue;
     this.data.left = evt.currentLeftValue;
+  }
+
+  private setComponentDimensions() {
+    this.data.width = this.sideMenu_Width;
+    this.data.height = this.sideMenu_Height;
   }
 
 }

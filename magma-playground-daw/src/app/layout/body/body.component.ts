@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MainMenuComponent } from '../mainmenu/mainmenu.component';
+import { SideMenuComponent } from '../sidemenu/sidemenu.component';
 
 @Component({
   selector: 'layout-body',
@@ -8,7 +10,11 @@ import { Component, Input } from '@angular/core';
 
 export class BodyComponent {
 
-  @Input() sidebar_defaultWidth: number;
-  @Input() sidebar_defaultHeight: number;
+  @ViewChild(SideMenuComponent) sideMenuComponent : SideMenuComponent;
+  @ViewChild(MainMenuComponent) mainMenuComponent : MainMenuComponent;
+
+  setBodyComponentDimensions(sideMenu_Width: number, sideMenu_Height : number) {
+    this.sideMenuComponent.setSideMenuComponentDimensions(sideMenu_Width, sideMenu_Height);
+  }
 
 }

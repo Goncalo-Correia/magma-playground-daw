@@ -4,10 +4,10 @@
     </div>
     <div id="layout-flex-container" class="padding-x-10 padding-y-10">
         <div id="layout-body" class="full-height">
-            <layout-body [sidebar_defaultWidth]="sidebar_defaultWidth" [sidebar_defaultHeight]="sidebar_defaultHeight"></layout-body>
+            <layout-body></layout-body>
         </div>
         <div id="layout-footer">
-            <layout-footer [footer_defaultWidth]="footer_defaultWidth" [footer_defaultHeight]="footer_defaultHeight" (footerResizeEvent)="footerResizeEventHandler($event)"></layout-footer>
+            <layout-footer (footerResizeEvent)="footerResizeEventHandler($event)"></layout-footer>
         </div>
     </div>
 </div>
