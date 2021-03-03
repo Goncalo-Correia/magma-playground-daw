@@ -6,30 +6,39 @@ import { AngularResizeElementDirection, AngularResizeElementEvent } from 'angula
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css', '/node_modules/angular-resize-element/bundles/style.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
-  private footer_Width: number;
-  private footer_Height: number;
-  private minFooterHeight: number = 200;
-  private maxFooterHeight: number;
+  private footer_width: number;
+  private footer_height: number;
+  private footer_minHeight: number;
+  private footer_maxHeight: number;
   
   @Output() footerResizeEvent = new EventEmitter<number>();
 
   public readonly Footer_ResizeDirection = AngularResizeElementDirection.TOP;
   public data: any = {};
 
-  ngOnInit() {
-    this.maxFooterHeight = window.innerHeight / 2;
-  }
-
-  setFooterComponentDimensions(footer_Width: number, footer_Height : number) {
-    this.footer_Width = footer_Width;
-    this.footer_Height = footer_Height;
+  initializeFooterComponentDimensions(footer_width: number, footer_height : number, footer_minHeight: number, footer_maxHeight: number) {
+    this.footer_width = footer_width;
+    this.footer_minHeight = footer_minHeight;
+    this.footer_maxHeight = footer_maxHeight;
+    this.footer_height = footer_height;
     this.setComponentDimensions();
   }
 
+  resizeFooterComponentDimensions(footer_width: number, footer_height : number) {
+    this.footer_height = footer_height;
+    this.footer_width = footer_width;
+    this.setComponentDimensions();
+  }
+
+  private setComponentDimensions() {
+    this.data.width = this.footer_width;
+    this.data.height = this.footer_height;
+  }
+
   onResize(evt: AngularResizeElementEvent): void {
-    if (evt.currentHeightValue >= this.minFooterHeight && evt.currentHeightValue <= this.maxFooterHeight) {
+    if (evt.currentHeightValue >= this.footer_minHeight && evt.currentHeightValue <= this.footer_maxHeight) {
       this.data.height = evt.currentHeightValue;
       this.triggerFooterResizeEvent(this.data.height);
     }
@@ -40,11 +49,6 @@ export class FooterComponent implements OnInit {
 
   triggerFooterResizeEvent(footerHeight: number) {
     this.footerResizeEvent.emit(footerHeight);
-  }
-
-  private setComponentDimensions() {
-    this.data.width = this.footer_Width;
-    this.data.height = this.footer_Height;
   }
 
 }

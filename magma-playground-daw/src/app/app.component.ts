@@ -1,6 +1,4 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { AngularResizeElementDirection, AngularResizeElementEvent } from 'angular-resize-element';
-import { cwd } from 'process';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { BodyComponent } from './layout/body/body.component';
 import { FooterComponent } from './layout/footer/footer.component';
@@ -16,10 +14,23 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'magma-playground-daw';
 
   /* ---- layout ----- */
-  sidebar_defaultWidth: number;
-  sidebar_defaultHeight: number;
+  window_defaultHeight: number;
+  window_defaultWidth: number;
+
+  header_defaultWidth: number;
+  header_defaultHeight: number;
+
+  sideMenu_defaultWidth: number;
+  sideMenu_defaultHeight: number;
+  sideMenu_minWidth: number = 200;
+  sideMenu_maxWidth: number;
+
   footer_defaultWidth: number;
   footer_defaultHeight: number;
+  footer_minHeight: number = 200;
+  footer_maxHeight: number;
+
+  private padding_defaut: number = 20;
 
   resizeObservable$: Observable<Event>;
   resizeSubscription$: Subscription;
@@ -30,6 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.bindWindowResizeEvent();
+    this.calculateChildComponentMaximumDimensions();
   }
   
   ngAfterViewInit() {
@@ -37,32 +49,45 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   footerResizeEventHandler(footerHeight: number) {
-    this.sidebar_defaultHeight = (document.getElementById('layout-menu-container').offsetHeight + this.footer_defaultHeight) - footerHeight;
+    this.sideMenu_defaultHeight = (document.getElementById('layout-menu-container').offsetHeight + this.footer_defaultHeight) - footerHeight;
     this.footer_defaultHeight = footerHeight;
     this.resizeLayoutDimensions();
   }
 
   private initializeLayoutDimensions() {
-    this.sidebar_defaultWidth = 200;
+    this.sideMenu_defaultWidth = 200;
     this.footer_defaultHeight = 200;
-    this.sidebar_defaultHeight = document.getElementById('layout-menu-container').offsetHeight - this.footer_defaultHeight;
-    this.footer_defaultWidth = document.getElementById('footer').offsetWidth;
-
-    this.setChildComponentsDimensions();
+    this.window_defaultWidth = window.innerWidth;
+    this.window_defaultHeight = window.innerHeight;
+    this.header_defaultWidth = document.getElementById('layout-header').offsetWidth;
+    this.header_defaultHeight = document.getElementById('layout-header').offsetHeight;
+    this.sideMenu_defaultHeight = document.getElementById('layout-menu-container').offsetHeight - this.footer_defaultHeight;
+    this.footer_defaultWidth = document.getElementById('layout-footer').offsetWidth;
+    this.initializeChildComponentsDimensions();
   }
 
   private resizeLayoutDimensions() {
-    this.sidebar_defaultWidth = 200;
-    this.footer_defaultHeight = 200;
-    this.sidebar_defaultHeight = document.getElementById('layout-menu-container').offsetHeight - this.footer_defaultHeight;
-    this.footer_defaultWidth = document.getElementById('footer').offsetWidth;
-    
-    this.setChildComponentsDimensions();
+    this.calculateChildComponentMaximumDimensions();
+    this.window_defaultWidth = window.innerWidth;
+    this.window_defaultHeight = window.innerHeight;
+    this.sideMenu_defaultHeight = this.window_defaultHeight - (this.header_defaultHeight + this.footer_defaultHeight + this.padding_defaut);
+    this.footer_defaultWidth = this.window_defaultWidth - this.padding_defaut;
+    this.resizeChildComponentsDimensions();
   }
 
-  private setChildComponentsDimensions() {
-    this.bodyComponent.setBodyComponentDimensions(this.sidebar_defaultWidth, this.sidebar_defaultHeight);
-    this.footerComponent.setFooterComponentDimensions(this.footer_defaultWidth, this.footer_defaultHeight);
+  private initializeChildComponentsDimensions() {
+    this.bodyComponent.initializeBodyComponentDimensions(this.sideMenu_defaultWidth, this.sideMenu_defaultHeight, this.sideMenu_minWidth, this.sideMenu_maxWidth);
+    this.footerComponent.initializeFooterComponentDimensions(this.footer_defaultWidth, this.footer_defaultHeight, this.footer_minHeight, this.footer_maxHeight);
+  }
+
+  private resizeChildComponentsDimensions() {
+    this.bodyComponent.resizeBodyComponentDimensions(this.sideMenu_defaultWidth, this.sideMenu_defaultHeight);
+    this.footerComponent.resizeFooterComponentDimensions(this.footer_defaultWidth, this.footer_defaultHeight);
+  }
+
+  private calculateChildComponentMaximumDimensions() {
+    this.sideMenu_maxWidth = window.innerWidth / 2;
+    this.footer_maxHeight = window.innerHeight / 2;
   }
 
   private bindWindowResizeEvent() {
