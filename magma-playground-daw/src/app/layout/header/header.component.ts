@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Project } from 'src/app/api/models/project.model';
 
 @Component({
   selector: 'layout-header',
@@ -9,30 +10,45 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class HeaderComponent {
 
-
   constructor(private modalService: NgbModal) {}
 
   showNewProjectModal(content: any) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'});
+    this.modalService.open(content);
   }
 
   showEditProjectModal(content: any) {
-    
+    this.modalService.open(content);
   }
   
-  showOpenProjectModal() {
-    
+  showOpenProjectModal(content: any) {
+    this.modalService.open(content);
   }
   
-  showSaveProjectModal() {
-    
+  showSaveProjectModal(content: any) {
+    this.modalService.open(content);
   }
 
   closeModal() {
     this.modalService.dismissAll();
   }
   
-  saveNewProject() {
-    
+  createProject() {
+    console.log(this.project);
+    this.closeModal();
+  }
+
+  updateProject() {
+    console.log(this.project);
+    this.closeModal();
+  }
+
+  openProject() {
+
+    this.closeModal();
+  }
+
+  saveProject() {
+  
+    this.closeModal();
   }
 }

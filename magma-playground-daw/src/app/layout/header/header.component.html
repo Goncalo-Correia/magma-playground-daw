@@ -3,27 +3,104 @@
         <div ngbDropdown id="header-project-dropdown">
             <button ngbDropdownToggle>Project</button>
             <div ngbDropdownMenu aria-labelledby="headerProjectDropdown">
-                <button ngbDropdownItem (click)="showNewProjectModal(content)">New +</button>
-                <button ngbDropdownItem (click)="showEditProjectModal(content)">Edit</button>
-                <button ngbDropdownItem (click)="showOpenProjectModal()">Open...</button>
-                <button ngbDropdownItem (click)="showSaveProjectModal()">Save</button>
+                <button ngbDropdownItem (click)="showNewProjectModal(newProjectModalContent)">New +</button>
+                <button ngbDropdownItem (click)="showEditProjectModal(editProjectModalContent)">Edit</button>
+                <button ngbDropdownItem (click)="showOpenProjectModal(openProjectModalContent)">Open...</button>
+                <button ngbDropdownItem (click)="showSaveProjectModal(saveProjectModalContent)">Save</button>
             </div>
         </div>
     </div>
 </div>
 <div id="header-modal">
     <div>
-        <ng-template #content let-modal>
+        <ng-template #newProjectModalContent let-modal>
             <div class="modal-header" id="new-project-modal">
+                <h5>New project</h5>
                 <button type="button" class="close" aria-label="Close" (click)="closeModal()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="newProjectForm_Name" placeholder="Name...">
+                </div>
+                <div class="form-row">
+                    <div class="col-6">
+                        <label for="newProjectForm_isTemplate" class="mr-2">Template</label>
+                        <input type="checkbox" id="newProjectForm_isTemplate" ngModel>
+                    </div>
+                    <div class="col-6">
+                        <label for="newProjectForm_isDefault" class="mr-2">Default</label>
+                        <input type="checkbox" id="newProjectForm_isDefault" ngModel>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                
+                <button (click)="closeModal()">Close</button>
+                <button (click)="createProject()">Create</button>
+            </div>
+        </ng-template>
+    </div>
+    <div>
+        <ng-template #editProjectModalContent let-modal>
+            <div class="modal-header" id="edit-project-modal">
+                <h5>Edit project</h5>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="editProjectForm_Name" placeholder="Name...">
+                </div>
+                <div class="form-row">
+                    <div class="col-6">
+                        <label for="editProjectForm_isTemplate" class="mr-2">Template</label>
+                        <input type="checkbox" id="editProjectForm_isTemplate" ngModel>
+                    </div>
+                    <div class="col-6">
+                        <label for="editProjectForm_isDefault" class="mr-2">Default</label>
+                        <input type="checkbox" id="editProjectForm_isDefault" ngModel>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModal()">Close</button>
+                <button (click)="updateProject()">Update</button>
+            </div>
+        </ng-template>
+    </div>
+    <div>
+        <ng-template #openProjectModalContent let-modal>
+            <div class="modal-header" id="open-project-modal">
+                <h5>Open project</h5>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                open
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModal()">Close</button>
+                <button>Save</button>
+            </div>
+        </ng-template>
+    </div>
+    <div>
+        <ng-template #saveProjectModalContent let-modal>
+            <div class="modal-header" id="save-project-modal">
+                <h5>Save project</h5>
+                <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                save
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModal()">Close</button>
+                <button>Save</button>
             </div>
         </ng-template>
     </div>
