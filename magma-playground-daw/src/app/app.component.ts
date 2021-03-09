@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
+import { Project } from './api/models/project.model';
 import { BodyComponent } from './layout/body/body.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
@@ -13,31 +14,36 @@ import { HeaderComponent } from './layout/header/header.component';
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'magma-playground-daw';
 
-  /* ---- layout ----- */
-  window_defaultHeight: number;
-  window_defaultWidth: number;
+  /* ----- layout ----- */
+  private window_defaultHeight: number;
+  private window_defaultWidth: number;
 
-  header_defaultWidth: number;
-  header_defaultHeight: number;
+  private header_defaultWidth: number;
+  private header_defaultHeight: number;
 
-  sideMenu_defaultWidth: number;
-  sideMenu_defaultHeight: number;
-  sideMenu_minWidth: number = 200;
-  sideMenu_maxWidth: number;
+  private sideMenu_defaultWidth: number;
+  private sideMenu_defaultHeight: number;
+  private sideMenu_minWidth: number = 200;
+  private sideMenu_maxWidth: number;
 
-  footer_defaultWidth: number;
-  footer_defaultHeight: number;
-  footer_minHeight: number = 200;
-  footer_maxHeight: number;
+  private footer_defaultWidth: number;
+  private footer_defaultHeight: number;
+  private footer_minHeight: number = 200;
+  private footer_maxHeight: number;
 
   private padding_defaut: number = 20;
 
-  resizeObservable$: Observable<Event>;
-  resizeSubscription$: Subscription;
+  private resizeObservable$: Observable<Event>;
+  private resizeSubscription$: Subscription;
 
   @ViewChild(HeaderComponent) headerComponent : HeaderComponent;
   @ViewChild(BodyComponent) bodyComponent : BodyComponent;
   @ViewChild(FooterComponent) footerComponent : FooterComponent;
+
+  /* ----- project ----- */
+
+  private project: Project;
+
 
   ngOnInit() {
     this.bindWindowResizeEvent();
@@ -47,6 +53,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.initializeLayoutDimensions();
   }
+
+  /* ---------- Layout Start ---------- */
 
   footerResizeEventHandler(footerHeight: number) {
     this.sideMenu_defaultHeight = (document.getElementById('layout-menu-container').offsetHeight + this.footer_defaultHeight) - footerHeight;
@@ -96,5 +104,12 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.resizeLayoutDimensions();
     })
   }
+
+  /* ---------- Layout End ---------- */
+
+  /* ---------- Project Start ---------- */
+
+
+  /* ---------- Project End ---------- */
 
 }

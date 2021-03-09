@@ -7,6 +7,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { MainMenuComponent } from './layout/mainmenu/mainmenu.component';
 import { SideMenuComponent } from './layout/sidemenu/sidemenu.component';
 import { AngularResizeElementModule } from 'angular-resize-element';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AngularResizeElementModule } from 'angular-resize-element';
   ],
   imports: [
     BrowserModule,
-    AngularResizeElementModule
+    AngularResizeElementModule,
+    NgbModule
   ],
   providers: [],
   exports: [

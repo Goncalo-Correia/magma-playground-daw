@@ -76,3 +76,19 @@ body {
 .resize {
     background-color: var(--color-background-primary);
 }
+
+/* ==================================== */
+/* ----- Bootstrap custom styling ----- */
+/* ==================================== */
+
+/* Dropdown */
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: var(--color-background-primary);
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
