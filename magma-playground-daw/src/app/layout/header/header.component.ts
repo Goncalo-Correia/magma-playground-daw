@@ -33,12 +33,10 @@ export class HeaderComponent {
   }
   
   createProject() {
-    console.log(this.project);
     this.closeModal();
   }
 
   updateProject() {
-    console.log(this.project);
     this.closeModal();
   }
 
